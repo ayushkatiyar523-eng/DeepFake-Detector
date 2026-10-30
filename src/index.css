@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 230 35% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 230 25% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 230 30% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 174 100% 48%;
+    --primary-foreground: 230 35% 7%;
+
+    --secondary: 45 95% 56%;
+    --secondary-foreground: 230 35% 7%;
+
+    --muted: 230 20% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 174 100% 48%;
+    --accent-foreground: 230 35% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 230 25% 18%;
+    --input: 230 25% 18%;
+    --ring: 174 100% 48%;
+
+    --radius: 1rem;
+
+    /* Custom AI Dashboard Colors */
+    --neon-teal: 174 100% 48%;
+    --cyber-gold: 45 95% 56%;
+    --deep-navy: 230 35% 7%;
+    --glass-bg: 230 25% 12%;
+    --glow-intensity: 0.5;
+    
+    /* Verdict Colors */
+    --real-glow: 158 100% 50%;
+    --fake-glow: 350 100% 65%;
+    
+    /* Glassmorphism */
+    --glass-border: 230 25% 25%;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 245, 212, 0.1);
+  }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 230 35% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 35% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 35% 15%;
+
+    --primary: 174 80% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 85% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 230 15% 92%;
+    --muted-foreground: 230 15% 40%;
+
+    --accent: 174 80% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 230 20% 88%;
+    --input: 230 20% 88%;
+    --ring: 174 80% 38%;
+
+    /* Custom AI Dashboard Colors for Light Mode */
+    --neon-teal: 174 80% 38%;
+    --cyber-gold: 45 85% 48%;
+    --deep-navy: 0 0% 98%;
+    --glass-bg: 0 0% 100%;
+    --glow-intensity: 0.3;
+    
+    /* Verdict Colors */
+    --real-glow: 158 80% 40%;
+    --fake-glow: 350 80% 55%;
+    
+    /* Glassmorphism */
+    --glass-border: 230 20% 85%;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 150, 130, 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-md border border-primary/10;
+    box-shadow: 0 8px 32px 0 hsl(var(--primary) / 0.1);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4),
+                0 0 40px hsl(var(--primary) / 0.2);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.6),
+                 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .gold-glow {
+    box-shadow: 0 0 20px hsl(var(--secondary) / 0.4),
+                0 0 40px hsl(var(--secondary) / 0.2);
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px hsl(var(--primary) / 0.3),
+                  0 0 20px hsl(var(--primary) / 0.2);
+    }
+    to {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.6),
+                  0 0 40px hsl(var(--primary) / 0.4);
+    }
+  }
+  
+  @keyframes pulse-border {
+    0%, 100% {
+      border-color: hsl(var(--primary) / 0.2);
+    }
+    50% {
+      border-color: hsl(var(--primary) / 0.6);
+    }
+  }
+  
+  .animate-pulse-border {
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+}
